@@ -1,0 +1,62 @@
+<h2 class="d-flex justify-content-center align-items-center">Добавление нового
+  товара</h2>
+
+
+  
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Название</label>
+    <input
+      name="title"
+      type="text"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Город</label>
+    <input
+      name="discription"
+      type="text"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      required
+    />
+
+      </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Дата</label>
+    <input
+      name="date"
+      type="date"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      required
+    />
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Время</label>
+    <input
+      name="time"
+      type="time"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      required
+    />
+
+
+
+
+  </div>
+  </div>
+
+  {{#if flag}}
+    <p style="color:red">Ошибка при добавлении, повторите ввод</p>
+  {{/if}}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

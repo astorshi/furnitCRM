@@ -1,0 +1,17 @@
+<form class="short-form" id="signInForm" action='/auth/signin' method="POST">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Ваш email</label>
+        <input name="email" type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            {{#if flag}}
+              <p style="color:red">В системе нет такой почты</p>
+            {{/if}}
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input name="password" minlength="1" required type="password" class="form-control" id="exampleInputPassword1">
+        {{#if flag2}}
+          <p style="color:red">Неверный пароль, осталась 1 попытка</p>
+        {{/if}}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,49 @@
+<form id="signUpForm" class="short-form" action="/auth/signup" method="POST">
+    <div class="mb-3">
+      <label for="exampleInputName" class="form-label">Введите ваше имя</label>
+      <input
+        name="name"
+        required
+        type="text"
+        class="form-control"
+        id="exampleInputName"
+        aria-describedby="emailHelp"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Ваш email</label>
+      <input
+        name="email"
+        required
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+    {{#if flag}}
+    <p style="color:red">Эта почта уже используется</p>
+    {{/if}}
+    </div>
+
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input
+        name="password"
+        required
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        minlength="1"
+      />
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary form-control"
+      style="margin:30px; width:80px; margin-left:0"
+      
+    >Submit</button>
+  </form>
+
