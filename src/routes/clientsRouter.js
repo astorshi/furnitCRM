@@ -12,4 +12,13 @@ router.route("/").get(async (req, res) => {
   }
 });
 
+router
+  .route("/new")
+  .get((req, res) => {
+    res.render("newClient");
+  })
+  .post((req, res) => {
+    
+  });
+
 module.exports = router;
