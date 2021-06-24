@@ -18,6 +18,8 @@ const indexRouter = require("./src/routes/indexRouter");
 const authRouter = require("./src/routes/authRouter");
 const clientsRouter = require("./src/routes/clientsRouter");
 
+const ordersRouter = require("./src/routes/ordersRouter");
+
 const PORT = process.env.PORT || 3000;
 const app = express();
 
@@ -63,6 +65,7 @@ app.use((req, res, next) => {
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/clients", clientsRouter);
+app.use("/orders", ordersRouter);
 
 app.listen(PORT, () => {
   console.log("Server started on PORT", PORT);
