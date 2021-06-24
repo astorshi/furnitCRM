@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const Client = require("../models/clientModel");
 const Comment = require("../models/commentModel");
+const User = require("../models/userModel");
 
 const router = Router();
 
@@ -8,9 +9,8 @@ router.route("/").get(async (req, res) => {
   try {
     const allClients = await Client.find()
       .populate("creator")
-      .populate("comments");
-    const allComments = allClients.map((el) => el.comments);
-    console.log("allComments===>", allComments);
+      .populate("comments")
+      .lean();
     res.render("clients", { allClients });
   } catch (error) {
     console.log(error);
@@ -20,7 +20,6 @@ router.route("/").get(async (req, res) => {
 router
   .route("/new")
   .get((req, res) => {
-    console.log(8888888);
     res.render("newClient");
   })
   .post(async (req, res) => {
@@ -36,7 +35,6 @@ router
   });
 
 router.route("/comment").post(async (req, res) => {
-  console.log("req.body===>", req.body);
   try {
     const { body, clientId } = req.body;
     let dat = new Date();
@@ -48,21 +46,19 @@ router.route("/comment").post(async (req, res) => {
       minute: "numeric",
     };
     let dateNow = dat.toLocaleString("ru-RU", options);
-    // console.log("dat==>", dat);
-    // console.log("dateNow==>>", dateNow);
     const newComment = await Comment.create({
       body,
-      user: req.session.user.id,
+      user: res.locals.name,
       date: dateNow,
     });
-    const currentClient = await Client.findByIdAndUpdate(
+    await Client.findByIdAndUpdate(
       clientId,
       {
         $push: { comments: newComment._id },
       },
       { new: true }
     );
-    console.log("currentClient===>>>", currentClient);
+    res.json(newComment);
   } catch (error) {
     console.log(error);
   }
