@@ -1,0 +1,13 @@
+{{#if allClients}}
+<ul>
+  {{#each allClients}}
+  <li>
+    <p>{{this.name}}</p>
+    <p>{{this.surname}}</p>
+    <p>{{this.patronymic}}</p>
+    <p>{{this.email}}</p>
+    <p>{{this.phone}}</p>
+  </li>
+  {{/each}}
+</ul>
+{{/if}}
