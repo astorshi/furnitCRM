@@ -15,13 +15,9 @@ const userSchema = mongoose.Schema({
     requried: true,
     min: 1,
   },
-  sellers: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Comments",
-  }],
   admin: {
     type: Boolean,
-    default: false
+    default: false,
   }
 });
 
