@@ -9,19 +9,14 @@ router.get("/signup", (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
-  console.log('tyta')
   try {
-    console.log('tyta2')
     const { name, email, password } = req.body;
-    console.log(req.body)
     const hash = await bcrypt.hash(password, saltRound);
-    console.log(hash)
     const newUser = await Users.create({
       name,
       email,
       password: hash,
     });
-    console.log(newUser)
     if (newUser) {
       req.session.user = {
         id: newUser._id,
