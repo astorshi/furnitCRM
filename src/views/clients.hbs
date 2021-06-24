@@ -13,12 +13,14 @@
       <p>Добавил клиента: {{this.creator.name}}</p>
       <p>Заказы: </p>
       <p><b>Комментарии:</b></p>
-      {{#each this.comments}}
-      <p>{{this.body}}</p>
-      <p>Дата комментария: {{this.date}}</p>
-      <p>Автор комментария: {{this.user}}</p>
-      <hr>
-      {{/each}}
+      <div class="comments">
+        {{#each this.comments}}
+        <p>{{this.body}}</p>
+        <p>Дата комментария: {{this.date}}</p>
+        <p>Автор комментария: {{this.user}}</p>
+        <hr>
+        {{/each}}
+      </div>
     </div>
     <div class="right">
       <form class="leavecomment" id="leavecomment" method="POST">
@@ -27,7 +29,7 @@
       </form>
       <div class="actionButtons">
         <a href="/clients/{{this._id}}" class="btn btn-primary">редактировать данные клиента</a>
-        <a href="/orders/new" class="btn btn-primary">создать заказ</a>
+        <a href="/orders/new/{{this._id}}" class="btn btn-primary">создать заказ</a>
         <button data-button='deleteClient' type="submit" class="btn btn-primary">удалить клиента</button>
       </div>
     </div>
@@ -35,9 +37,5 @@
   <hr>
   {{/each}}
 </ul>
-
-
-
-
 
 {{/if}}

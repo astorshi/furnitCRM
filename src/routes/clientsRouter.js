@@ -23,7 +23,6 @@ router
     res.render("newClient");
   })
   .post(async (req, res) => {
-    console.log(1111111111);
     try {
       const newClient = await Client.create({
         ...req.body,

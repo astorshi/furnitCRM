@@ -28,9 +28,9 @@ $formLeaveComment.addEventListener("submit", async (e) => {
   });
   const dataFromServer = await response.json();
   console.log("dataFromServer==>>", dataFromServer);
-  const left = document.querySelector(".left");
-  left.insertAdjacentHTML(
-    "beforeend",
+  // const left = document.querySelector(".left");
+  document.querySelector(".comments").insertAdjacentHTML(
+    "afterbegin",
     `<p>${dataFromServer.body}</p>
   <p>Дата комментария: ${dataFromServer.date}</p>
   <p>Автор комментария: ${dataFromServer.user}</p>

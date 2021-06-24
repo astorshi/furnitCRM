@@ -1,42 +1,46 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const orderSchema = mongoose.Schema({
   number: {
-    type: String 
+    type: String,
   },
   typeFurn: {
-     type: String
-    },
+    type: String,
+  },
   priceFurn: {
-    type: String
+    type: String,
   },
   delivPrice: {
-    type: String
+    type: String,
   },
   deliveryDate: {
-    type: String
+    type: Date,
   },
   constructPrice: {
-    type: String
+    type: String,
   },
   constructDate: {
-    type: String
+    type: String,
   },
   deliveryTeam: {
-    type: String 
+    type: String,
   },
   constructTeam: {
-    type: String 
+    type: String,
   },
   status: {
-    type: String 
+    type: String,
   },
-  comments: [{
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comments",
+    },
+  ],
+  client: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Comments",
-  }]
+    ref: "Clients",
+  },
 });
 
-module.exports = mongoose.model('Orders', orderSchema);
-
-
+module.exports = mongoose.model("Orders", orderSchema);

@@ -1,0 +1,57 @@
+<form method="POST" class="formNewOrder row g-3">
+  <h3>Новый заказ для клиента: {{currentClient.surname}} {{currentClient.name}} {{currentClient.patronymic}}</h3>
+  <div class="col-12">
+    <label class="form-label">Номер заказа</label>
+    <input name="number" type="text" class="form-control" id="inputOrderNum">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Тип мебели</label>
+    <input name="typeFurn" type="text" class="form-control" id="typeFyrn">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Стоимость мебели</label>
+    <input name="priceFurn" type="text" class="form-control" id="constructDate">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Бригада доставки</label>
+    <input name="deliveryTeam" type="text" class="form-control" id="constructDate">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Дата доставки</label>
+    <input name="deliveryDate" type="date" class="form-control" id="deliveryDate">
+  </div>
+  <div class="col-md-6">
+    <label for="delivPrice" class="form-label">Стоимость доставки</label>
+    <input name="delivPrice" type="text" class="form-control" id="delivPrice">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Дата сборки</label>
+    <input name="constructDate" type="date" class="form-control" id="constructPrice">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Бригада сборки</label>
+    <input name="constructTeam" type="text" class="form-control" id="constructTeam">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Стоимость сборки</label>
+    <input name="constructPrice" type="text" class="form-control" id="typeFyrn">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Статус</label>
+    <select class="form-select" name="status">
+      <option selected>Выбрать статус заказа</option>
+      <option>Ожидание поставки</option>
+      <option>В работе</option>
+      <option>Доставлен</option>
+      <option>Собран</option>
+      <option>Рекламация</option>
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Комментарии</label>
+    <input type="text" class="form-control" id="Comments">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Создать заказ</button>
+  </div>
+</form>
