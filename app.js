@@ -28,8 +28,8 @@ const sessionParser = sessions({
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
-  //  mongoUrl: `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`,
-  mongoUrl: DB_CONNECTION_URL
+    //  mongoUrl: `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+    mongoUrl: DB_CONNECTION_URL,
   }),
   cookie: {
     // secure: true,
@@ -62,8 +62,7 @@ app.use((req, res, next) => {
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
-app.use("/clients", ordersRouter);
-app.use("/clients/new", ordersRouter);
+app.use("/orders", ordersRouter);
 
 app.listen(PORT, () => {
   console.log("Server started on PORT", PORT);

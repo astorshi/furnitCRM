@@ -1,0 +1,9 @@
+.column {
+  font-size: 10px;
+  color: rgb(104, 22, 22);
+  background-color: burlywood;
+}
+.ordersTable {
+  width: 900px;
+  background-color: burlywood;
+}
