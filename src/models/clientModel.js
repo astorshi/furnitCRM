@@ -23,7 +23,7 @@ const clientSchema = mongoose.Schema({
      required: true,
      unique: true 
     },
-  adress: {
+  address: {
     type: String,
     required: true 
   },
@@ -35,6 +35,10 @@ const clientSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Orders",
   }],
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users",
+  }
 });
 
 module.exports = mongoose.model('Clients', clientSchema);
