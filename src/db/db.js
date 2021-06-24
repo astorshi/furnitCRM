@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 
-const { dbConnectionURL, options } = require("./config");
+const { options } = require("./config");
+const { DB_CONNECTION_URL } = process.env;
 
 function connect() {
-  console.log(dbConnectionURL);
-  mongoose.connect(dbConnectionURL, options, (err) => {
+  console.log(DB_CONNECTION_URL);
+  mongoose.connect(DB_CONNECTION_URL, options, (err) => {
     if (err) return console.log("Произошла ошибка ", err);
     console.log("Установлено успешное подключение к Базе Данных!");
   });

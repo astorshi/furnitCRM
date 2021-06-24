@@ -4,10 +4,14 @@ const path = require("path");
 const sessions = require("express-session");
 const MongoStore = require("connect-mongo");
 //const morgan = require('morgan');
-const secretKey = require("crypto").randomBytes(64).toString("hex");
+//const secretKey = require("crypto").randomBytes(64).toString("hex");
+const { SECRET_KEY } = process.env;
 const { connect } = require("./src/db/db");
 const hbs = require("hbs");
-const { DB_HOST, DB_NAME, DB_PORT } = process.env;
+//const { DB_HOST, DB_NAME, DB_PORT } = process.env;
+const { DB_CONNECTION_URL } = process.env;
+
+console.log(DB_CONNECTION_URL);
 
 const indexRouter = require("./src/routes/indexRouter");
 
@@ -20,11 +24,12 @@ const app = express();
 
 const sessionParser = sessions({
   name: app.get("cookieName"),
-  secret: secretKey,
+  secret: SECRET_KEY,
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
-    mongoUrl: `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+  //  mongoUrl: `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+  mongoUrl: DB_CONNECTION_URL
   }),
   cookie: {
     // secure: true,
