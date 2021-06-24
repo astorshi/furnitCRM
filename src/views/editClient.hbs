@@ -1,0 +1,23 @@
+{{#if currentClient}}
+<form method="POST" action="/clients/{{currentClient._id}}">
+  <div class="mb-3">
+    <input placeholder="Фамилия" name="surname" type="text" class="form-control" value="{{currentClient.surname}}" required />
+  </div>
+  <div class="mb-3">
+    <input placeholder="Имя" name="name" type="text" class="form-control" value="{{currentClient.name}}" required />
+  </div>
+  <div class="mb-3">
+    <input placeholder="Отчество" name="patronymic" type="text" class="form-control" value="{{currentClient.patronymic}}" required />
+  </div>
+  <div class="mb-3">
+    <input placeholder="email" name="email" type="email" class="form-control" value="{{currentClient.email}}" required />
+  </div>
+  <div class="mb-3">
+    <input placeholder="Номер телефона" name="phone" type="tel" class="form-control" value="{{currentClient.phone}}" required />
+  </div>
+  <div class="mb-3">
+    <input placeholder="Адрес" name="address" type="text" class="form-control" value="{{currentClient.address}}" required />
+  </div>
+  <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+</form>
+{{/if}}

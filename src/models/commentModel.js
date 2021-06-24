@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const commentSchema = mongoose.Schema({
   user: {
@@ -8,14 +8,11 @@ const commentSchema = mongoose.Schema({
   body: {
     type: String,
     requried: true,
-    unique: true,
   },
   date: {
-    type: Date,
-    default: Date,
+    type: String,
     requried: true,
   },
-
 });
 
-module.exports = mongoose.model('Comments', commentSchema);
+module.exports = mongoose.model("Comments", commentSchema);

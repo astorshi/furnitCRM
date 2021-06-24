@@ -1,15 +1,43 @@
 {{#if allClients}}
-<ul>
+
+<ul class="clientsContainer">
   {{#each allClients}}
-  <li>
-    <p>{{this.surname}}</p>
-    <p>{{this.name}}</p>
-    <p>{{this.patronymic}}</p>
-    <p>{{this.email}}</p>
-    <p>{{this.phone}}</p>
-    <p>{{this.address}}</p>
-    <hr>
+  <li data-id="{{this._id}}" class="clientContainer">
+    <div class="left">
+      <p>Фамилия: {{this.surname}}</p>
+      <p>Имя: {{this.name}}</p>
+      <p>Отчество: {{this.patronymic}}</p>
+      <p>Email: {{this.email}}</p>
+      <p>Телефон: {{this.phone}}</p>
+      <p>Адрес: {{this.address}}</p>
+      <p>Добавил клиента: {{this.creator.name}}</p>
+      <p>Заказы: </p>
+      <p><b>Комментарии:</b></p>
+      {{#each this.comments}}
+      <p>{{this.body}}</p>
+      <p>{{this.date}}</p>
+      <p>{{this.user}}</p>
+      <hr>
+      {{/each}}
+    </div>
+    <div class="right">
+      <form class="leavecomment" id="leavecomment" method="POST">
+        <textarea placeholder="Оставьте комментарий о клиенте" name="body" cols="40" rows="3"></textarea>
+        <button type="submit" class="btn-comment btn btn-primary">оставить комментарий</button>
+      </form>
+      <div class="actionButtons">
+        <a href="/clients/{{this._id}}" class="btn btn-primary">редактировать данные клиента</a>
+        <a href="/orders/new" class="btn btn-primary">создать заказ</a>
+        <button data-button='deleteClient' type="submit" class="btn btn-primary">удалить клиента</button>
+      </div>
+    </div>
   </li>
+  <hr>
   {{/each}}
 </ul>
+
+
+
+
+
 {{/if}}

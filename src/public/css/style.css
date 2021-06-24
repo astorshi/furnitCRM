@@ -1,0 +1,13 @@
+.clientContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.leavecomment {
+  display: flex;
+  flex-direction: column;
+}
+.btn-comment {
+  width: 50%;
+  margin: 10px 0;
+}
+
