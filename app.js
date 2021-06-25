@@ -54,23 +54,17 @@ app.use((req, res, next) => {
     res.locals.id = req.session.user.id;
     res.locals.name = req.session.user.name;
     res.locals.email = req.session.user.email;
-<<<<<<< HEAD
 
     console.log(res.locals);
-=======
->>>>>>> 49e11dc2f7ed0493f6e60a92b2ed53c07cb0cf3d
   }
   next();
 });
 
+app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/clients", clientsRouter);
 app.use("/orders", ordersRouter);
-<<<<<<< HEAD
 
-=======
-app.use("/", indexRouter);
->>>>>>> 49e11dc2f7ed0493f6e60a92b2ed53c07cb0cf3d
 
 app.listen(PORT, () => {
   connect();
