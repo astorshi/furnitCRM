@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+    "node": "^14.x"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-mongo": "^4.4.1",
@@ -13,10 +16,7 @@
     "hbs": "^4.1.2",
     "mongoose": "^5.12.14"
   },
-  "devDependencies": {
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.7"
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",

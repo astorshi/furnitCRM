@@ -8,7 +8,6 @@ const MongoStore = require("connect-mongo");
 const { SECRET_KEY } = process.env;
 const { connect } = require("./src/db/db");
 const hbs = require("hbs");
-const morgan = require("morgan");
 //const { DB_HOST, DB_NAME, DB_PORT } = process.env;
 const { DB_CONNECTION_URL } = process.env;
 
@@ -44,17 +43,13 @@ connect();
 
 app.set("cookieName", "userCookie");
 app.set("views", path.join(process.env.PWD, "src", "views"));
-app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "src", "public")));
 hbs.registerPartials(path.join(__dirname, "src", "views", "partials"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//app.use(morgan('dev'));
-app.set("view engine", "hbs");
-
 app.use((req, res, next) => {
-  if (req.session.user?.id) {
+  if (req.session?.user) {
     res.locals.id = req.session.user.id;
     res.locals.name = req.session.user.name;
     res.locals.email = req.session.user.email;
@@ -63,6 +58,9 @@ app.use((req, res, next) => {
   }
   next();
 });
+//app.use(morgan('dev'));
+app.set("view engine", "hbs");
+
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
