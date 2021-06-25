@@ -3,6 +3,7 @@ const router = Router();
 const bcrypt = require("bcrypt");
 const Order = require("../models/orderModel");
 const Client = require("../models/clientModel");
+const Comment = require("../models/commentModel");
 
 router.route("/").get(async (req, res) => {
   res.render("orders");
@@ -39,9 +40,40 @@ router
 
 router.route("/:orderId/details").get(async (req, res) => {
   const { orderId } = req.params;
-  const currentOrder = await Order.findById(orderId).populate('client');
+  const currentOrder = await Order.findById(orderId).populate("client");
   console.log();
   res.render("orderDetails", { currentOrder });
+});
+
+router.route("/:orderId/details/comment").post(async (req, res) => {
+  try {
+    const { body } = req.body;
+    const { orderId } = req.params;
+    let dat = new Date();
+    let options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    };
+    let dateNow = dat.toLocaleString("ru-RU", options);
+    const newComment = await Comment.create({
+      body,
+      user: res.locals.name,
+      date: dateNow,
+    });
+    await Order.findByIdAndUpdate(
+      orderId,
+      {
+        $push: { comments: newComment._id },
+      },
+      { new: true }
+    );
+    res.json(newComment);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;

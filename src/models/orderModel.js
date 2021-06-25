@@ -32,6 +32,9 @@ const orderSchema = mongoose.Schema({
   status: {
     type: String,
   },
+  commentsWhenCreate: {
+    type: String,
+  },
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,

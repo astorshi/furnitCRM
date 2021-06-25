@@ -1,13 +1,34 @@
 {{#if currentOrder}}
-<h3>Детали заказа {{currentOrder.number}}</h3>
-<p>Клиент: {{currentOrder.client.surname}} {{currentOrder.client.name}} {{currentOrder.client.patronymic}}</p>
-<div>Тип мебели: {{currentOrder.typeFurn}}</div>
-<div>Стоимость мебели: {{currentOrder.priceFurn}}</div>
-<div>Бригада доставки: {{currentOrder.deliveryTeam}}</div>
-<div>Дата доставки: {{currentOrder.deliveryDate}}</div>
-<div>Стоимость доставки: {{currentOrder.delivPrice}}</div>
-<div>Дата сборки: {{currentOrder.constructDate}}</div>
-<div>Бригада сборки: {{currentOrder.constructTeam}}</div>
-<div>Стоимость сборки: {{currentOrder.constructPrice}}</div>
-<div>Статус: {{currentOrder.status}}</div>
-{{/if}}
+<div class="currentOrder" data-id='{{currentOrder._id}}'>
+  <h3>Детали заказа {{currentOrder.number}}</h3>
+  <p>Клиент: {{currentOrder.client.surname}} {{currentOrder.client.name}} {{currentOrder.client.patronymic}}</p>
+  <div>Тип мебели: {{currentOrder.typeFurn}}</div>
+  <div>Стоимость мебели: {{currentOrder.priceFurn}}</div>
+  <div>Бригада доставки: {{currentOrder.deliveryTeam}}</div>
+  <div>Дата доставки: {{currentOrder.deliveryDate}}</div>
+  <div>Стоимость доставки: {{currentOrder.delivPrice}}</div>
+  <div>Дата сборки: {{currentOrder.constructDate}}</div>
+  <div>Бригада сборки: {{currentOrder.constructTeam}}</div>
+  <div>Стоимость сборки: {{currentOrder.constructPrice}}</div>
+  <div>Статус: {{currentOrder.status}}</div>
+  <div>Комментарии при заказе: {{currentOrder.commentsWhenCreate}}</div>
+  <h4>Комментарии сотрудников:</h4>
+  <div class="comments"> 
+    {{#if currentOrder.comments}}
+    <div class="commentsOrder">
+      {{#each currentOrder.comments}}
+      <p>{{this.body}}</p>
+      <div style="font-size: 12px;">Дата комментария: {{this.date}}</div>
+      <div style="font-size: 12px;">Автор комментария: {{this.user}}</div>
+      <hr>
+      {{/each}}
+    </div>
+    {{/if}}
+  </div>
+  {{!-- <div>Комментарии: {{currentOrder.comments}}</div> --}}
+  {{/if}}
+  <form class="leavecommenttoorder" method="POST">
+    <textarea placeholder="Оставьте комментарий о заказе" name="body" cols="40" rows="3"></textarea>
+    <button type="submit" class="btn-comment btn btn-primary">оставить комментарий</button>
+  </form>
+</div>

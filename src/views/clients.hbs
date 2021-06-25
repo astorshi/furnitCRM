@@ -13,7 +13,8 @@
       <p>Добавил клиента: {{this.creator.name}}</p>
       <p>Заказы: {{#each this.orders}}<a class="orderOfClient" href="/orders/{{this._id}}/details">{{this.number}}</a> {{/each}}</p>
       <p><b>Комментарии:</b></p>
-      <div class="none comments">
+      {{#if this.comments}}
+      <div class="comments">
         {{#each this.comments}}
         <p>{{this.body}}</p>
         <div style="font-size: 12px;">Дата комментария: {{this.date}}</div>
@@ -21,6 +22,7 @@
         <hr>
         {{/each}}
       </div>
+      {{/if}}
     </div>
     <div class="right">
       <form class="leavecomment" id="leavecomment" method="POST">
