@@ -14,20 +14,22 @@ $clientsContainer?.addEventListener("click", async (e) => {
   }
 });
 
-$formLeaveComment?.addEventListener("submit", async (e) => {
+$clientsContainer?.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = Object.fromEntries(new FormData(e.target));
+  console.log(e.target);
+  console.log('formData===>', formData);
   const clientId = e.target.closest("[data-id]").dataset.id;
   const response = await fetch(`/clients/comment/${clientId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ body: formData.body, clientId }),
+    body: JSON.stringify({ body: formData.body}),
   });
   const dataFromServer = await response.json();
   console.log('dataFromServer===>', dataFromServer);
-  document.querySelector(".comments").insertAdjacentHTML(
+  e.target.closest("[data-id]").querySelector(".comments").insertAdjacentHTML(
     "afterbegin",
     `<p>${dataFromServer.body}</p>
   <p>Дата комментария: ${dataFromServer.date}</p>

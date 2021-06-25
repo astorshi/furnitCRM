@@ -33,6 +33,12 @@ const clientSchema = mongoose.Schema({
       ref: "Comments",
     },
   ],
+  orders: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Orders",
+    },
+  ],
   creator: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Users",
