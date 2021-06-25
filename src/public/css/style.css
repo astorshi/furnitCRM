@@ -11,7 +11,7 @@ body {
   height: 100%;
 }
 
-img{
+img {
   width: 400px;
   height: 400px;
 }
@@ -32,10 +32,21 @@ img{
   height: 150px;
   overflow-y: scroll;
   border: 1px solid black;
+  border-radius: 10px;
   padding: 10px;
 }
 
-.header .bg-light{
+.header .bg-light {
   background-color: inherit !important;
 }
 
+.orderOfClient {
+  border: 1px solid black;
+  padding: 5px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: black;
+}
+.none {
+  display: none;
+}

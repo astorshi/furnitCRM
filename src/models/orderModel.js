@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const orderSchema = mongoose.Schema({
   number: {
     type: String,
+    unique: true,
   },
   typeFurn: {
     type: String,
@@ -14,7 +15,7 @@ const orderSchema = mongoose.Schema({
     type: String,
   },
   deliveryDate: {
-    type: Date,
+    type: String,
   },
   constructPrice: {
     type: String,
@@ -29,6 +30,9 @@ const orderSchema = mongoose.Schema({
     type: String,
   },
   status: {
+    type: String,
+  },
+  commentsWhenCreate: {
     type: String,
   },
   comments: [
