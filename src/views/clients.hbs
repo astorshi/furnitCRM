@@ -11,13 +11,13 @@
       <p>Телефон: {{this.phone}}</p>
       <p>Адрес: {{this.address}}</p>
       <p>Добавил клиента: {{this.creator.name}}</p>
-      <p>Заказы: </p>
+      <p>Заказы: {{#each this.orders}}<a class="orderOfClient" href="/orders/{{this._id}}/details">{{this.number}}</a> {{/each}}</p>
       <p><b>Комментарии:</b></p>
-      <div class="comments">
+      <div class="none comments">
         {{#each this.comments}}
         <p>{{this.body}}</p>
-        <p>Дата комментария: {{this.date}}</p>
-        <p>Автор комментария: {{this.user}}</p>
+        <div style="font-size: 12px;">Дата комментария: {{this.date}}</div>
+        <div style="font-size: 12px;">Автор комментария: {{this.user}}</div>
         <hr>
         {{/each}}
       </div>

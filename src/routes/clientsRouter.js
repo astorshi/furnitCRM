@@ -11,8 +11,8 @@ router.route("/").get(async (req, res) => {
     const allClients = await Client.find()
       .populate("creator")
       .populate("comments")
-      .lean();
-     
+      .populate('orders')
+      .lean();     
     res.render("clients", { allClients });
   } catch (error) {
     console.log(error);

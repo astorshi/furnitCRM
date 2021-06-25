@@ -1,0 +1,13 @@
+{{#if currentOrder}}
+<h3>Детали заказа {{currentOrder.number}}</h3>
+<p>Клиент: {{currentOrder.client.surname}} {{currentOrder.client.name}} {{currentOrder.client.patronymic}}</p>
+<div>Тип мебели: {{currentOrder.typeFurn}}</div>
+<div>Стоимость мебели: {{currentOrder.priceFurn}}</div>
+<div>Бригада доставки: {{currentOrder.deliveryTeam}}</div>
+<div>Дата доставки: {{currentOrder.deliveryDate}}</div>
+<div>Стоимость доставки: {{currentOrder.delivPrice}}</div>
+<div>Дата сборки: {{currentOrder.constructDate}}</div>
+<div>Бригада сборки: {{currentOrder.constructTeam}}</div>
+<div>Стоимость сборки: {{currentOrder.constructPrice}}</div>
+<div>Статус: {{currentOrder.status}}</div>
+{{/if}}
