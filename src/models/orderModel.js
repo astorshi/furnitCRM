@@ -14,7 +14,7 @@ const orderSchema = mongoose.Schema({
     type: String,
   },
   deliveryDate: {
-    type: Date,
+    type: String,
   },
   constructPrice: {
     type: String,

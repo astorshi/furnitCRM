@@ -1,11 +1,15 @@
 const { Router } = require("express");
-const router = Router();
-const bcrypt = require("bcrypt");
-const Order = require("../models/orderModel");
+const Orders = require("../models/orderModel");
 const Client = require("../models/clientModel");
+const router = Router();
 
 router.route("/").get(async (req, res) => {
-  res.render("orders");
+  try {
+    const allOrders = await Orders.find().populate("client");
+    res.render("orders", { allOrders });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 router
@@ -19,8 +23,29 @@ router
     const currentClient = await Client.findById(req.params.clientId);
     console.log("req.body==>", req.body);
     try {
-      const newOrder = await Order.create({
-        ...req.body,
+      const {
+        number,
+        typeFurn,
+        priceFurn,
+        deliveryTeam,
+        deliveryDate,
+        delivPrice,
+        constructDate,
+        constructTeam,
+        constructPrice,
+        status,
+      } = req.body;
+      const newOrder = await Orders.create({
+        number,
+        typeFurn,
+        priceFurn,
+        deliveryTeam,
+        deliveryDate,
+        delivPrice,
+        constructDate,
+        constructTeam,
+        constructPrice,
+        status,
         client: currentClient?._id,
       });
       res.redirect("/orders");

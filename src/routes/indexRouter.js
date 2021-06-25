@@ -3,8 +3,8 @@ const router = Router();
 const Users = require("../models/userModel");
 
 router.get("/", (req, res) => {
-  const user = req.session.user
-  res.render('index' ,{user})
-})
+  const user = req.session.user;
+  res.render("index", { user });
+});
 
 module.exports = router;

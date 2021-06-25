@@ -9,8 +9,7 @@ router.route("/").get(async (req, res) => {
   try {
     const allClients = await Client.find()
       .populate("creator")
-      .populate("comments")
-      .lean();
+      .populate("comments");
     res.render("clients", { allClients });
   } catch (error) {
     console.log(error);
