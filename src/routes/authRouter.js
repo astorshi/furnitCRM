@@ -51,7 +51,8 @@ router.post("/signin", async (req, res) => {
     const findUser = await Users.findOne({ email });
     const check =  bcrypt.compare(password, findUser.password);
     if (check) {
-      req.session.newId = findUser._id;
+      // req.session.newId = findUser._id;
+      // req.session.email = findUser.email;
       req.session.user = {
         id: findUser._id,
         name: findUser.name,
@@ -63,6 +64,8 @@ router.post("/signin", async (req, res) => {
       return res.status(418).render("signin", { flag2 });
     }
   } catch (err) {
+    console.log("--err->");
+    console.log(err);
     const flag = true;
     return res.status(418).render("signin", { flag });
   }
