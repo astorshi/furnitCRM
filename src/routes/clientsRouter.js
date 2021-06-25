@@ -23,19 +23,22 @@ router
     res.render("newClient");
   })
   .post(async (req, res) => {
+    console.log(req.body);
     try {
       const newClient = await Client.create({
         ...req.body,
         creator: req.session.user.id,
       });
+      res.redirect("/clients");
     } catch (error) {
       console.log(error);
     }
   });
 
-router.route("/comment").post(async (req, res) => {
+router.route("/comment/:id").post(async (req, res) => {
   try {
-    const { body, clientId } = req.body;
+    const { body } = req.body;
+    const { id } = req.params;
     let dat = new Date();
     let options = {
       year: "numeric",
@@ -51,7 +54,7 @@ router.route("/comment").post(async (req, res) => {
       date: dateNow,
     });
     await Client.findByIdAndUpdate(
-      clientId,
+      id,
       {
         $push: { comments: newComment._id },
       },

@@ -1,9 +1,8 @@
 const $clientsContainer = document.querySelector(".clientsContainer");
 const $formLeaveComment = document.forms.leavecomment;
 
-$clientsContainer.addEventListener("click", async (e) => {
+$clientsContainer?.addEventListener("click", async (e) => {
   if (e.target.dataset.button === "deleteClient") {
-    console.log(2222);
     const client = e.target.closest("[data-id]");
     const clientId = client.dataset.id;
     const response = await fetch(`/clients/${clientId}`, {
@@ -15,11 +14,11 @@ $clientsContainer.addEventListener("click", async (e) => {
   }
 });
 
-$formLeaveComment.addEventListener("submit", async (e) => {
+$formLeaveComment?.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = Object.fromEntries(new FormData(e.target));
   const clientId = e.target.closest("[data-id]").dataset.id;
-  const response = await fetch("/clients/comment", {
+  const response = await fetch(`/clients/comment/${clientId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -27,8 +26,7 @@ $formLeaveComment.addEventListener("submit", async (e) => {
     body: JSON.stringify({ body: formData.body, clientId }),
   });
   const dataFromServer = await response.json();
-  console.log("dataFromServer==>>", dataFromServer);
-  // const left = document.querySelector(".left");
+  console.log('dataFromServer===>', dataFromServer);
   document.querySelector(".comments").insertAdjacentHTML(
     "afterbegin",
     `<p>${dataFromServer.body}</p>
