@@ -41,13 +41,24 @@ router
     }
   });
 
-router.route("/:orderId/details").get(async (req, res) => {
-  const { orderId } = req.params;
-  const currentOrder = await Orders.findById(orderId)
-    .populate("client")
-    .populate("comments");
-  res.render("orderDetails", { currentOrder });
-});
+router
+  .route("/:orderId/details")
+  .get(async (req, res) => {
+    const { orderId } = req.params;
+    const currentOrder = await Orders.findById(orderId)
+      .populate("client")
+      .populate("comments");
+    res.render("orderDetails", { currentOrder });
+  })
+  .delete(async (req, res) => {
+    try {
+      const { orderId } = req.params;
+      await Orders.findByIdAndDelete(orderId);
+      res.status(200).redirect("/orders");
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
 router.route("/:orderId/details/comment").post(async (req, res) => {
   try {

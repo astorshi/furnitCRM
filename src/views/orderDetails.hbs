@@ -1,6 +1,10 @@
 {{#if currentOrder}}
 <div class="currentOrder" data-id='{{currentOrder._id}}'>
-  <h3>Детали заказа {{currentOrder.number}}</h3>
+  <div class="topCurrentOrder">
+    <h3>Детали заказа {{currentOrder.number}}</h3> <button class="btn-comment btn btn-primary"
+      data-button="deleteOrder">удалить заказ</button>
+  </div>
+
   <p>Клиент: {{currentOrder.client.surname}} {{currentOrder.client.name}} {{currentOrder.client.patronymic}}</p>
   <div>Тип мебели: {{currentOrder.typeFurn}}</div>
   <div>Стоимость мебели: {{currentOrder.priceFurn}}</div>
@@ -13,7 +17,6 @@
   <div>Статус: {{currentOrder.status}}</div>
   <div>Комментарии при заказе: {{currentOrder.commentsWhenCreate}}</div>
   <h4>Комментарии сотрудников:</h4>
-
   {{#if currentOrder.comments}}
   <div class="commentsOrder">
     {{#each currentOrder.comments}}

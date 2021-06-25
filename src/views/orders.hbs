@@ -1,42 +1,62 @@
 <div id="ordersWindow">
-<table class="ordersTable">
-  <thead class="thead-dark">
-    <tr class="forNet">
-      <th scope="col"  class='vertLines' style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>Номер заказа</th>
-      <th scope="col"  class='vertLines' style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>Тип мебели</th>
-      <th scope="col"  class='vertLines' style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>Клиент</th>
-      <th scope="col"  class='vertLines' style='border-bottom: 2px solid rgb(244, 197, 141); '>Дата доставки</th>
-    </tr>
-  </thead>
-  <tbody id='tbody'>
-    {{#if allOrders}}
-    {{#each allOrders}}
-<tr class="forNet">
-<td class='vertLines' style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '> <a href="/orders/{{this._id}}/details">{{this.number}}</a> </td>
-<td class='vertLines' style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>{{this.typeFurn}}</td>
-<td class='vertLines' style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>{{this.client.name}} {{this.client.surname}} {{this.client.patronymic}}</td>
-<td class='vertLines' style='border-bottom: 2px solid rgb(244, 197, 141);'>{{this.deliveryDate}}</td>
-</tr>
-{{/each}}
-  </tbody>
-</table>
-{{/if}}
+  <table class="ordersTable">
+    <thead class="thead-dark">
+      <tr class="forNet">
+        <th scope="col" class='vertLines'
+          style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>Номер заказа
+        </th>
+        <th scope="col" class='vertLines'
+          style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>Тип мебели
+        </th>
+        <th scope="col" class='vertLines'
+          style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>Клиент</th>
+        <th scope="col" class='vertLines' style='border-bottom: 2px solid rgb(244, 197, 141); '>Дата доставки</th>
+      </tr>
+    </thead>
+    <tbody id='tbody'>
+      {{#if allOrders}}
+      {{#each allOrders}}
+      <tr class="forNet">
+        <td class='vertLines'
+          style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '> <a
+            href="/orders/{{this._id}}/details">{{this.number}}</a> </td>
+        <td class='vertLines'
+          style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>
+          {{this.typeFurn}}</td>
+        <td class='vertLines'
+          style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>
+          {{this.client.surname}} {{this.client.name}} {{this.client.patronymic}}</td>
+        <td class='vertLines' style='border-bottom: 2px solid rgb(244, 197, 141);'>{{this.deliveryDate}}</td>
+        {{!-- <td class='vertLines' style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141);'> <button class="btn btn-primary"
+            data-button="deleteOrderFromTable">удалить заказ</button>
+        </td>
+        <td class='vertLines' style='border-bottom: 2px solid rgb(244, 197, 141);'> <button class="btn btn-primary"
+            data-button="editOrderFromTable">редактировать
+            заказ</button>
+        </td> --}}
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{/if}}
 </div>
 
 <style>
-  body{
+  body {
     background-color: #efede9;
     background-image: none;
   }
-  #ordersWindow{
-        display: flex;
+
+  #ordersWindow {
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 600px;
   }
-  .ordersTable{
-        height: 78%;
+
+  .ordersTable {
+    height: 78%;
     text-align: center;
 
   }

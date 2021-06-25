@@ -15,6 +15,21 @@ $clientsContainer?.addEventListener("click", async (e) => {
   }
 });
 
+document
+  .querySelector(".currentOrder")
+  ?.addEventListener("click", async (e) => {
+    if (e.target.dataset.button === "deleteOrder") {
+      const order = e.target.closest("[data-id]");
+      const orderId = order.dataset.id;
+      const response = await fetch(`/orders/${orderId}/details`, {
+        method: "DELETE",
+      });
+      if (response.redirected) {
+        window.location = response.url;
+      }
+    }
+  });
+
 $clientsContainer?.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = Object.fromEntries(new FormData(e.target));
@@ -56,9 +71,10 @@ $leavecommenttoorder?.addEventListener("submit", async (e) => {
     body: JSON.stringify({ body: formData.body }),
   });
   const dataFromServer = await response.json();
-  // console.log("dataFromServer===>", dataFromServer);
-  const comments = e.target.closest("[data-id]").querySelector(".commentsOrder");
-  if (dataFromServer.body) {
+  const comments = e.target
+    .closest("[data-id]")
+    .querySelector(".commentsOrder");
+
     comments?.insertAdjacentHTML(
       "afterbegin",
       `<p>${dataFromServer.body}</p>
@@ -66,7 +82,7 @@ $leavecommenttoorder?.addEventListener("submit", async (e) => {
     <div style="font-size: 12px;">Автор комментария: ${dataFromServer.user}</div>
   <hr>`
     );
-  }
+  
 
   e.target.reset();
 });

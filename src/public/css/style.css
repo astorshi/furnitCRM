@@ -51,3 +51,7 @@ img {
 .none {
   display: none;
 }
+.topCurrentOrder {
+  display: flex;
+  justify-content: space-between;
+}
