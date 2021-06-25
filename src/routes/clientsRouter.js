@@ -2,6 +2,7 @@ const { Router } = require("express");
 const Client = require("../models/clientModel");
 const Comment = require("../models/commentModel");
 const User = require("../models/userModel");
+const Order = require("../models/commentModel");
 
 const router = Router();
 
@@ -11,6 +12,7 @@ router.route("/").get(async (req, res) => {
       .populate("creator")
       .populate("comments")
       .lean();
+     
     res.render("clients", { allClients });
   } catch (error) {
     console.log(error);
