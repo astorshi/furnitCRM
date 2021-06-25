@@ -30,9 +30,8 @@
         <button id="topbtn" type="submit" class="btn-comment btn btn-primary">оставить комментарий</button>
       </form>
       <div class="actionButtons">
-        <a href="/clients/{{this._id}}" class="btn btn-primary">редактировать данные клиента</a>
         <a href="/orders/new/{{this._id}}" class="btn btn-primary">создать заказ</a>
-        <button data-button='deleteClient' type="submit" class="btn btn-primary">удалить клиента</button>
+              {{ helperCheckAndAdd this.creator._id ../id this._id }}
       </div>
     </div>
   </li>
