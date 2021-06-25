@@ -1,9 +1,27 @@
 .column {
   font-size: 10px;
   color: rgb(104, 22, 22);
-  background-color: burlywood;
+  /* border: 2px solid burlywood; */
 }
 .ordersTable {
   width: 900px;
-  background-color: burlywood;
+  border-collapse: collapse;
+  border: 3px solid rgb(244, 197, 141);
+  border-radius: 10px;
+}
+#ordersWindow {
+  border-radius: 10px;
+  border-collapse: collapse;
+}
+
+
+.horLines {
+  border-collapse: collapse;
+  padding: 3px;
+
+}
+
+.vertLines {
+  border-collapse: collapse;
+  padding: 3px;
 }

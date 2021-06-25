@@ -1,12 +1,16 @@
 const { Router } = require("express");
-const router = Router();
-const bcrypt = require("bcrypt");
-const Order = require("../models/orderModel");
+const Orders = require("../models/orderModel");
 const Client = require("../models/clientModel");
 const Comment = require("../models/commentModel");
+const router = Router();
 
 router.route("/").get(async (req, res) => {
-  res.render("orders");
+  try {
+    const allOrders = await Orders.find().populate("client");
+    res.render("orders", { allOrders });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 router
@@ -20,8 +24,29 @@ router
     const { clientId } = req.params;
     const currentClient = await Client.findById(clientId);
     try {
-      const newOrder = await Order.create({
-        ...req.body,
+      const {
+        number,
+        typeFurn,
+        priceFurn,
+        deliveryTeam,
+        deliveryDate,
+        delivPrice,
+        constructDate,
+        constructTeam,
+        constructPrice,
+        status,
+      } = req.body;
+      const newOrder = await Orders.create({
+        number,
+        typeFurn,
+        priceFurn,
+        deliveryTeam,
+        deliveryDate,
+        delivPrice,
+        constructDate,
+        constructTeam,
+        constructPrice,
+        status,
         client: currentClient?._id,
       });
       const updClient = await Client.findByIdAndUpdate(
@@ -40,7 +65,7 @@ router
 
 router.route("/:orderId/details").get(async (req, res) => {
   const { orderId } = req.params;
-  const currentOrder = await Order.findById(orderId).populate("client");
+  const currentOrder = await Orders.findById(orderId).populate("client");
   console.log();
   res.render("orderDetails", { currentOrder });
 });

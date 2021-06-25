@@ -12,7 +12,7 @@ router.route("/").get(async (req, res) => {
       .populate("creator")
       .populate("comments")
       .populate('orders')
-      .lean();     
+      // .lean();     
     res.render("clients", { allClients });
   } catch (error) {
     console.log(error);
