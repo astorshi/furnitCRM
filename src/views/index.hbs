@@ -1,55 +1,54 @@
-
 {{#if id}}
 <div class="block">
 
   <a href="/clients/new">
-  <div  class="enter">
-    <p>Добавить клиента</p>
-  </div>
+    <div class="enter">
+      <p>Добавить клиента</p>
+    </div>
 
   </a>
- <a href="/clients">
-  <div class="enter">
-    <p>Клиенты</p>
-  </div>
- </a>
- <a href="/orders">
-  <div class="enter">
-    <p>Заказы</p>
-  </div>
- </a>
+  <a href="/clients">
+    <div class="enter">
+      <p>Клиенты</p>
+    </div>
+  </a>
+  <a href="/orders">
+    <div class="enter">
+      <p>Заказы</p>
+    </div>
+  </a>
 
 </div>
 {{else}}
 <div class="block">
 
   <a href="/auth/signup">
-  <div  class="enter">
-    <p>Зарегистрироваться</p>
-  </div>
+    <div class="enter">
+      <p>Зарегистрироваться</p>
+    </div>
 
   </a>
- <a href="/auth/signin">
-  <div class="enter">
-    <p>Войти</p>
-  </div>
- </a>
-  </div>
+  <a href="/auth/signin">
+    <div class="enter">
+      <p>Войти</p>
+    </div>
+  </a>
+</div>
 
 {{/if}}
 
 
 <style>
+  a {
+    text-decoration: none !important;
+    color: #7a7d54;
+    cursor: revert;
+    display: block;
+  }
 
- a{
-   text-decoration: none!important;
-   color:#7a7d54;
-   cursor: revert;
-   display: block;
- }
- a:hover{
-   color:#796947
- }
+  a:hover {
+    color: #796947
+  }
 
   .enter {
     min-height: 80px;
@@ -72,7 +71,7 @@
   }
 
   .block {
-    width:75%;
+    width: 75%;
     display: flex;
     justify-content: space-between;
     margin-top: 8%;
@@ -83,40 +82,54 @@
   p {
     display: contents;
   }
-  @media (min-width: 1400px){
 
-.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-    max-width: 1587px;
-}
-  }
-   @media(min-width: 1800px){
-     .enter {
-        font-size: 24px;
-    min-height: 108px;
-    min-width: 305px;
-    max-height: 513px;
-    max-width: 240px;
-   }
-   }
-  @media (min-width: 1200px, max-width:1499){
+  @media (min-width: 1400px) {
 
-.container, .container-lg, .container-md, .container-sm, .container-xl {
-  max-width: 83%;;
-}
-  }
-
- @media (min-width: 1500px, max-width:1799){
-
-   .enter {
-    font-size: 32px;
-    min-height: 120px;
-    min-width: 350px;
-    max-height: 520px;
-    max-width: 240px;
-   }
- .container{
-   max-width: 90%;
-   min-height: 20%;
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+      max-width: 1587px;
     }
- }
+  }
+
+  @media(min-width: 1800px) {
+    .enter {
+      font-size: 24px;
+      min-height: 108px;
+      min-width: 305px;
+      max-height: 513px;
+      max-width: 240px;
+    }
+  }
+
+  @media (min-width: 1200px, max-width:1499) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+      max-width: 83%;
+      ;
+    }
+  }
+
+  @media (min-width: 1500px, max-width:1799) {
+
+    .enter {
+      font-size: 32px;
+      min-height: 120px;
+      min-width: 350px;
+      max-height: 520px;
+      max-width: 240px;
+    }
+
+    .container {
+      max-width: 90%;
+      min-height: 20%;
+    }
+  }
 </style>

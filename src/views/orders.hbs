@@ -12,7 +12,7 @@
     {{#if allOrders}}
     {{#each allOrders}}
 <tr class="forNet">
-<td class='vertLines' style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>{{this.number}}</td>
+<td class='vertLines' style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '> <a href="/orders/{{this._id}}/details">{{this.number}}</a> </td>
 <td class='vertLines' style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>{{this.typeFurn}}</td>
 <td class='vertLines' style='border-right: 2px solid rgb(244, 197, 141); border-bottom: 2px solid rgb(244, 197, 141); '>{{this.client.name}} {{this.client.surname}} {{this.client.patronymic}}</td>
 <td class='vertLines' style='border-bottom: 2px solid rgb(244, 197, 141);'>{{this.deliveryDate}}</td>
