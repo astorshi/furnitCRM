@@ -18,8 +18,6 @@ $clientsContainer?.addEventListener("click", async (e) => {
 $clientsContainer?.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = Object.fromEntries(new FormData(e.target));
-  console.log(e.target);
-  console.log("formData===>", formData);
   const clientId = e.target.closest("[data-id]").dataset.id;
   const response = await fetch(`/clients/comment/${clientId}`, {
     method: "POST",
@@ -58,8 +56,8 @@ $leavecommenttoorder?.addEventListener("submit", async (e) => {
     body: JSON.stringify({ body: formData.body }),
   });
   const dataFromServer = await response.json();
-  console.log("dataFromServer===>", dataFromServer);
-  const comments = e.target.closest("[data-id]").querySelector(".comments");
+  // console.log("dataFromServer===>", dataFromServer);
+  const comments = e.target.closest("[data-id]").querySelector(".commentsOrder");
   if (dataFromServer.body) {
     comments?.insertAdjacentHTML(
       "afterbegin",

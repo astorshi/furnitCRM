@@ -24,29 +24,8 @@ router
     const { clientId } = req.params;
     const currentClient = await Client.findById(clientId);
     try {
-      const {
-        number,
-        typeFurn,
-        priceFurn,
-        deliveryTeam,
-        deliveryDate,
-        delivPrice,
-        constructDate,
-        constructTeam,
-        constructPrice,
-        status,
-      } = req.body;
       const newOrder = await Orders.create({
-        number,
-        typeFurn,
-        priceFurn,
-        deliveryTeam,
-        deliveryDate,
-        delivPrice,
-        constructDate,
-        constructTeam,
-        constructPrice,
-        status,
+        ...req.body,
         client: currentClient?._id,
       });
       const updClient = await Client.findByIdAndUpdate(
@@ -56,7 +35,6 @@ router
         },
         { new: true }
       );
-      console.log("updClient===>", updClient);
       res.redirect("/orders");
     } catch (error) {
       console.log(error);
@@ -65,8 +43,9 @@ router
 
 router.route("/:orderId/details").get(async (req, res) => {
   const { orderId } = req.params;
-  const currentOrder = await Orders.findById(orderId).populate("client");
-  console.log();
+  const currentOrder = await Orders.findById(orderId)
+    .populate("client")
+    .populate("comments");
   res.render("orderDetails", { currentOrder });
 });
 
@@ -88,13 +67,14 @@ router.route("/:orderId/details/comment").post(async (req, res) => {
       user: res.locals.name,
       date: dateNow,
     });
-    await Order.findByIdAndUpdate(
+    const tmpOrder = await Orders.findByIdAndUpdate(
       orderId,
       {
         $push: { comments: newComment._id },
       },
       { new: true }
     );
+    console.log("tmpOrder===>", tmpOrder);
     res.json(newComment);
   } catch (error) {
     console.log(error);

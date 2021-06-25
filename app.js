@@ -5,7 +5,7 @@ const sessions = require("express-session");
 const MongoStore = require("connect-mongo");
 const { connect } = require("./src/db/db");
 const hbs = require("hbs");
-const morgan = require("morgan");
+// const morgan = require("morgan");
 const { DB_CONNECTION_URL, SECRET_KEY } = process.env;
 
 const { helperCheckAndAdd } = require("./helper-func/helper.js");
@@ -37,7 +37,7 @@ const sessionParser = sessions({
 });
 app.use(sessionParser);
 
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 app.set("view engine", "hbs");
 hbs.registerHelper("helperCheckAndAdd", helperCheckAndAdd);
 hbs.registerPartials(path.join(__dirname, "src", "views", "partials"));
@@ -54,8 +54,6 @@ app.use((req, res, next) => {
     res.locals.id = req.session.user.id;
     res.locals.name = req.session.user.name;
     res.locals.email = req.session.user.email;
-
-    console.log(res.locals);
   }
   next();
 });
@@ -65,8 +63,7 @@ app.use("/auth", authRouter);
 app.use("/clients", clientsRouter);
 app.use("/orders", ordersRouter);
 
-
 app.listen(PORT, () => {
-  connect();
   console.log("Server started on PORT", PORT);
+  connect();
 });

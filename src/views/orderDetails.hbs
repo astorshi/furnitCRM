@@ -13,18 +13,18 @@
   <div>Статус: {{currentOrder.status}}</div>
   <div>Комментарии при заказе: {{currentOrder.commentsWhenCreate}}</div>
   <h4>Комментарии сотрудников:</h4>
-  <div class="comments">
-    {{#if currentOrder.comments}}
-    <div class="commentsOrder">
-      {{#each currentOrder.comments}}
-      <p>{{this.body}}</p>
-      <div style="font-size: 12px;">Дата комментария: {{this.date}}</div>
-      <div style="font-size: 12px;">Автор комментария: {{this.user}}</div>
-      <hr>
-      {{/each}}
-    </div>
-    {{/if}}
+
+  {{#if currentOrder.comments}}
+  <div class="commentsOrder">
+    {{#each currentOrder.comments}}
+    <p>{{this.body}}</p>
+    <div style="font-size: 12px;">Дата комментария: {{this.date}}</div>
+    <div style="font-size: 12px;">Автор комментария: {{this.user}}</div>
+    <hr>
+    {{/each}}
   </div>
+  {{/if}}
+
   {{!-- <div>Комментарии: {{currentOrder.comments}}</div> --}}
   <form class="leavecommenttoorder" method="POST">
     <textarea placeholder="Оставьте комментарий о заказе" name="body" cols="40" rows="3"></textarea>
@@ -32,64 +32,81 @@
   </form>
 </div>
 
-  {{/if}}
+{{/if}}
 
 
 <style>
-   body{
+  body {
     background-color: #efede9;
     background-image: none;
   }
 
-  .currentOrder{
-        margin-top: 6%;
+  .currentOrder {
+    margin-top: 6%;
     border: solid;
     border-radius: 14px;
     padding: 17px;
     border-color: #8e90716e;
   }
-  textarea{   
-     background: none;
+
+  textarea {
+    background: none;
     border-color: #a1977c;
     border-radius: 18px;
-}
+  }
 
 
- .btn-primary {
+  .btn-primary {
     color: #fff;
     background-color: #9a9377;
     border-color: #a29781;
-}
-.btn-primary:hover {
+  }
+
+  .btn-primary:hover {
     color: #fff;
     background-color: #837a62;
     border-color: #f1f1e5;
-}
+  }
 
-.btn-check:active+.btn-primary:focus, .btn-check:checked+.btn-primary:focus, .btn-primary.active:focus, .btn-primary:active:focus, .show>.btn-primary.dropdown-toggle:focus {
+  .btn-check:active+.btn-primary:focus,
+  .btn-check:checked+.btn-primary:focus,
+  .btn-primary.active:focus,
+  .btn-primary:active:focus,
+  .show>.btn-primary.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.25rem rgb(169 159 134 / 46%);
-}
-.btn-check:focus+.btn, .btn:focus {
+  }
+
+  .btn-check:focus+.btn,
+  .btn:focus {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(151 139 115 / 77%);
-}
+  }
 
-.btn-check:active+.btn-primary, .btn-check:checked+.btn-primary, .btn-primary.active, .btn-primary:active, .show>.btn-primary.dropdown-toggle {
+  .btn-check:active+.btn-primary,
+  .btn-check:checked+.btn-primary,
+  .btn-primary.active,
+  .btn-primary:active,
+  .show>.btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #8e8375;;
-    border-color: #8e8375;;
-}
-btn-check:focus+.btn-primary, .btn-primary:focus {
+    background-color: #8e8375;
+    ;
+    border-color: #8e8375;
+    ;
+  }
+
+  btn-check:focus+.btn-primary,
+  .btn-primary:focus {
     color: #fff;
     background-color: #a79c88;
     border-color: #a79c88;
     box-shadow: 0 0 0 0.25rem rgb(151 139 115 / 77%);
-}
-.comments {
+  }
+
+  .comments {
     height: 150px;
     overflow-y: scroll;
     border: 1px solid #a1977c;
     border-radius: 10px;
     padding: 10px;
-}
+  }
 </style>

@@ -28,7 +28,8 @@ img {
   width: 50%;
   margin: 10px 0;
 }
-.comments {
+.comments,
+.commentsOrder {
   height: 150px;
   overflow-y: scroll;
   border: 1px solid black;
