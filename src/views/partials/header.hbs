@@ -28,7 +28,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/orders">Заказы</a>
         </li>
-        {{else}}
+        {{!-- {{else}}
 
           <li class="nav-item">
             <a class="nav-link" href="/auth/signin">Войти</a>
@@ -36,7 +36,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/auth/signup">Зарегистрироваться</a>
-          </li>
+          </li> --}}
           {{/if}}
 
           </li>
@@ -46,9 +46,15 @@
     </div>
   </nav>
 </header>
-{{!-- <style>
+<style>
   .navbar {
     background: content-box;
-    background-color: #ededed !important
+    background-color: #ededed !important;
+    
   }
-</style> --}}
+  .navbar-nav{
+font-size: 24px;
+    margin-left: 62%;
+    flex-direction: row-reverse!important;
+  }
+</style>

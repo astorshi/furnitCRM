@@ -12,7 +12,7 @@ const morgan = require("morgan");
 //const { DB_HOST, DB_NAME, DB_PORT } = process.env;
 const { DB_CONNECTION_URL } = process.env;
 
-console.log(DB_CONNECTION_URL);
+const { helperCheckAndAdd } = require("./helper-func/helper.js");
 
 const indexRouter = require("./src/routes/indexRouter");
 const authRouter = require("./src/routes/authRouter");
@@ -58,6 +58,8 @@ app.use((req, res, next) => {
     res.locals.id = req.session.user.id;
     res.locals.name = req.session.user.name;
     res.locals.email = req.session.user.email;
+
+    
   }
   next();
 });
@@ -66,6 +68,8 @@ app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/clients", clientsRouter);
 app.use("/orders", ordersRouter);
+
+hbs.registerHelper('helperCheckAndAdd', helperCheckAndAdd)
 
 app.listen(PORT, () => {
   console.log("Server started on PORT", PORT);
