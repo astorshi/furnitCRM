@@ -5,8 +5,7 @@ const sessions = require("express-session");
 const MongoStore = require("connect-mongo");
 const { connect } = require("./src/db/db");
 const hbs = require("hbs");
-const morgan = require("morgan");
-const { DB_CONNECTION_URL, SECRET_KEY } = process.env;
+const { DB_CONNECTION_URL, SECRET_KEY, DEVMODE } = process.env;
 
 const { helperCheckAndAdd } = require("./helper-func/helper.js");
 
@@ -18,8 +17,6 @@ const ordersRouter = require("./src/routes/ordersRouter");
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-
-console.log();
 
 const sessionParser = sessions({
   name: app.get("cookieName"),
@@ -37,7 +34,11 @@ const sessionParser = sessions({
 });
 app.use(sessionParser);
 
-app.use(morgan("dev"));
+if (DEVMODE) {
+  const morgan = require("morgan");
+  app.use(morgan("dev"));
+}
+
 app.set("view engine", "hbs");
 hbs.registerHelper("helperCheckAndAdd", helperCheckAndAdd);
 hbs.registerPartials(path.join(__dirname, "src", "views", "partials"));
@@ -64,7 +65,6 @@ app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/clients", clientsRouter);
 app.use("/orders", ordersRouter);
-
 
 app.listen(PORT, () => {
   connect();
