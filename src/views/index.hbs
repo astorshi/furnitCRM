@@ -1,1 +1,59 @@
-Главная страница тут!
+
+{{#if user}}
+<div class="block">
+
+  <a href="/clients/new">
+  <div  class="enter">
+    <p>Добавить клиента</p>
+  </div>
+
+  </a>
+ <a href="/clients">
+  <div class="enter">
+    <p>Клиенты</p>
+  </div>
+ </a>
+ <a href="/orders">
+  <div class="enter">
+    <p>Заказы</p>
+  </div>
+ </a>
+
+</div>
+{{/if}}
+
+
+<style>
+ a{
+   text-decoration: none!important;
+   color:#494c4f;
+ }
+
+  .enter {
+    display: flex;
+    -webkit-text-stroke-width: medium;
+    width: 200px;
+    opacity: 0.8;
+    height: 90px;
+    justify-content: center;
+    align-items: center;
+    border-top-style: groove;
+    border-bottom-style: groove;
+        border-top-color:#858c938c;
+        border-bottom-color:#858c938c;
+    font-size: 18px;
+    font-family: monospace;
+  }
+
+  .block {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8%;
+    margin-left: 9%;
+    margin-right: 9%;
+  }
+
+  p {
+    display: contents;
+  }
+</style>

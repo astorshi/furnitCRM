@@ -1,3 +1,21 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-image: url(/css/image/beige-and-black-chair-in-front-of-white-desk-509922.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  background-position-y: -54px;
+  height: 100%;
+}
+
+img{
+  width: 400px;
+  height: 400px;
+}
+
 .clientContainer {
   display: flex;
   justify-content: space-between;
@@ -16,3 +34,8 @@
   border: 1px solid black;
   padding: 10px;
 }
+
+.header .bg-light{
+  background-color: inherit !important;
+}
+
