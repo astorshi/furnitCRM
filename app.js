@@ -69,5 +69,4 @@ app.use("/orders", ordersRouter);
 app.listen(PORT, () => {
   connect();
   console.log("Server started on PORT", PORT);
-  connect();
 });

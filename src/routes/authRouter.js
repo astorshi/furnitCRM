@@ -49,7 +49,7 @@ router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
   try {
     const findUser = await Users.findOne({ email });
-    const check =  bcrypt.compare(password, findUser.password);
+    const check =  await bcrypt.compare(password, findUser.password);
     if (check) {
       // req.session.newId = findUser._id;
       // req.session.email = findUser.email;
