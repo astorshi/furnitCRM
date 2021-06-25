@@ -21,6 +21,7 @@ const clientsRouter = require("./src/routes/clientsRouter");
 const ordersRouter = require("./src/routes/ordersRouter");
 
 const PORT = process.env.PORT || 3000;
+
 const app = express();
 
 const sessionParser = sessions({
@@ -40,7 +41,7 @@ const sessionParser = sessions({
 });
 app.use(sessionParser);
 
-connect();
+hbs.registerHelper("helperCheckAndAdd", helperCheckAndAdd);
 
 app.set("cookieName", "userCookie");
 app.set("views", path.join(process.env.PWD, "src", "views"));
@@ -59,7 +60,7 @@ app.use((req, res, next) => {
     res.locals.name = req.session.user.name;
     res.locals.email = req.session.user.email;
 
-    
+    console.log(res.locals);
   }
   next();
 });
@@ -69,8 +70,8 @@ app.use("/auth", authRouter);
 app.use("/clients", clientsRouter);
 app.use("/orders", ordersRouter);
 
-hbs.registerHelper('helperCheckAndAdd', helperCheckAndAdd)
 
 app.listen(PORT, () => {
+  connect();
   console.log("Server started on PORT", PORT);
 });

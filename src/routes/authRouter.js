@@ -32,9 +32,13 @@ router.post("/signup", async (req, res) => {
 });
 
 router.get("/signout", (req, res) => {
-  req.session.destroy();
-  res.clearCookie(req.app.get("cookieName"));
-  res.redirect("/");
+
+  req.session.destroy(function(err) {
+    if (err) return res.redirect('/')
+    res.clearCookie(req.app.get("cookieName"));
+    res.redirect("/");
+  })
+ 
 });
 
 router.get("/signin", async (req, res) => {
@@ -45,7 +49,7 @@ router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
   try {
     const findUser = await Users.findOne({ email });
-    const check = await bcrypt.compare(password, findUser.password);
+    const check =  bcrypt.compare(password, findUser.password);
     if (check) {
       req.session.newId = findUser._id;
       req.session.user = {
@@ -53,7 +57,7 @@ router.post("/signin", async (req, res) => {
         name: findUser.name,
         email: findUser.email,
       };
-      return res.redirect("/");
+      return res.redirect('/');
     } else {
       const flag2 = true;
       return res.status(418).render("signin", { flag2 });
