@@ -17,16 +17,18 @@
   <div>Статус: {{currentOrder.status}}</div>
   <div>Комментарии при заказе: {{currentOrder.commentsWhenCreate}}</div>
   <h4>Комментарии сотрудников:</h4>
-  {{#if currentOrder.comments}}
+
   <div class="commentsOrder">
+    {{#if currentOrder.comments}}
     {{#each currentOrder.comments}}
     <p>{{this.body}}</p>
     <div style="font-size: 12px;">Дата комментария: {{this.date}}</div>
     <div style="font-size: 12px;">Автор комментария: {{this.user}}</div>
     <hr>
     {{/each}}
+    {{/if}}
   </div>
-  {{/if}}
+
 
   {{!-- <div>Комментарии: {{currentOrder.comments}}</div> --}}
   <form class="leavecommenttoorder" method="POST">
